@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Макс Пушкарев](https://up.htmlacademy.ru/javascript/11/user/87167).
-* Наставник: `Неизвестно`.
+* Наставник: [Вениамин Тамбурин](https://up.htmlacademy.ru/javascript/11/user/552259).
 
 ---
 
