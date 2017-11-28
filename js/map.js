@@ -47,15 +47,12 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function compareRandom(a, b) {
+function compareRandom() {
   return Math.random() - 0.5;
 }
 
 function getRandomType(types) {
-  var typesArr = [];
-  for (var key in types) {
-    typesArr.push(key);
-  }
+  var typesArr = Object.keys(types);
   return typesArr[getRandomInt(0, typesArr.length - 1)];
 }
 
@@ -122,9 +119,9 @@ var renderCard = function (card) {
   cardElement.querySelector('.popup__rooms').textContent = card.offer.rooms + ' комнаты для ' + card.offer.guests + ' гостей';
   cardElement.querySelector('.popup__checkin').textContent = 'Заезд после ' + card.offer.checkin + ', выезд до ' + card.offer.checkout;
   cardElement.querySelector('.popup__features').innerHTML = '';
-  for (var i = 0; i < card.offer.features.length; i++) {
+  for (var j = 0; j < card.offer.features.length; j++) {
     var offerItem = document.createElement('li');
-    offerItem.className = 'feature feature--' + card.offer.features[i];
+    offerItem.className = 'feature feature--' + card.offer.features[j];
     cardElement.querySelector('.popup__features').appendChild(offerItem);
   }
   cardElement.querySelector('.popup__description').textContent = card.offer.description;
@@ -136,8 +133,8 @@ var pinFragment = document.createDocumentFragment();
 
 var cardFragment = document.createDocumentFragment();
 
-for (var i = 0; i < offers.length; i++) {
-  pinFragment.appendChild(renderPin(offers[i]));
+for (var k = 0; k < offers.length; k++) {
+  pinFragment.appendChild(renderPin(offers[k]));
 }
 
 cardFragment.appendChild(renderCard(offers[0]));
