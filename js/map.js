@@ -18,30 +18,27 @@ var OFFER_TYPES = {
 };
 
 var OFFER_CHECKINS = ['12:00', '13:00', '14:00'];
-
 var OFFER_CHECKOUTS = ['12:00', '13:00', '14:00'];
-
 var OFFER_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 
 var MIN_PRICE = 1000;
-
 var MAX_PRICE = 1000000;
 
 var MIN_NUMBER_OF_ROOMS = 1;
-
 var MAX_NUMBER_OF_ROOMS = 5;
 
 var MIN_NUMBER_OF_GUESTS = 1;
-
 var MAX_NUMBER_OF_GUESTS = 7;
 
 var MIN_LOCATION_X = 300;
-
 var MAX_LOCATION_X = 900;
 
 var MIN_LOCATION_Y = 100;
-
 var MAX_LOCATION_Y = 500;
+
+var WIDTH_PIN = 46;
+var HEIGHT_PIN = 46;
+var HEIGHT_PIN_ARROW = 18;
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -101,8 +98,8 @@ var similarCardTemplate = document.querySelector('template').content.querySelect
 var renderPin = function (pin) {
   var pinElement = similarPinTemplate.cloneNode(true);
 
-  pinElement.style.left = pin.location.x + 'px';
-  pinElement.style.top = pin.location.y + 'px';
+  pinElement.style.left = pin.location.x - (WIDTH_PIN / 2) + 'px';
+  pinElement.style.top = pin.location.y - (HEIGHT_PIN + HEIGHT_PIN_ARROW) + 'px';
   pinElement.querySelector('img').src = pin.author.avatar;
 
   return pinElement;
@@ -130,7 +127,6 @@ var renderCard = function (card) {
 };
 
 var pinFragment = document.createDocumentFragment();
-
 var cardFragment = document.createDocumentFragment();
 
 for (var k = 0; k < offers.length; k++) {
@@ -139,9 +135,8 @@ for (var k = 0; k < offers.length; k++) {
 
 cardFragment.appendChild(renderCard(offers[0]));
 
-var parentElement = document.querySelector('.map');
+var parentElementPin = document.querySelector('.map__pins');
+var parentElementCard = document.querySelector('.map');
 
-parentElement.appendChild(pinFragment);
-parentElement.insertBefore(cardFragment, document.querySelector('.map__filters-container'));
-
-
+parentElementPin.appendChild(pinFragment);
+parentElementCard.insertBefore(cardFragment, document.querySelector('.map__filters-container'));
