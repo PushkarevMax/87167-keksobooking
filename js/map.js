@@ -36,9 +36,8 @@ var MAX_LOCATION_X = 900;
 var MIN_LOCATION_Y = 100;
 var MAX_LOCATION_Y = 500;
 
-var WIDTH_PIN = 46;
-var HEIGHT_PIN = 46;
-var HEIGHT_PIN_ARROW = 18;
+var OFFSET_PIN = 4;
+var HEIGHT_PIN = 40;
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -98,8 +97,8 @@ var similarCardTemplate = document.querySelector('template').content.querySelect
 var renderPin = function (pin) {
   var pinElement = similarPinTemplate.cloneNode(true);
 
-  pinElement.style.left = pin.location.x - (WIDTH_PIN / 2) + 'px';
-  pinElement.style.top = pin.location.y - (HEIGHT_PIN + HEIGHT_PIN_ARROW) + 'px';
+  pinElement.style.left = pin.location.x - OFFSET_PIN + 'px';
+  pinElement.style.top = pin.location.y - HEIGHT_PIN + 'px';
   pinElement.querySelector('img').src = pin.author.avatar;
 
   return pinElement;
